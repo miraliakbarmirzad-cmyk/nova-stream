@@ -33,7 +33,62 @@ body{background:var(--yt-bg)!important;font-family:Arial,system-ui,sans-serif!im
 .mobile-bottom-nav{display:none}
 @media(max-width:1000px){.wrap{padding:0 16px}.top{margin:0 -16px;padding:10px 16px}.top .actions .install-app,.top .actions #downloads,.top .actions #mine{display:none}.nova-sidebar{width:76px;padding:12px 5px}.nova-side-link{flex-direction:column;gap:5px;padding:12px 2px;font-size:10px;text-align:center}.nova-side-icon{font-size:21px}#browse{margin-left:82px}.grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:22px 13px}}
 @media(max-width:600px){.wrap{padding:0 12px}.top{margin:0 -12px;padding:9px 12px;gap:8px}.brand{font-size:16px}.brand span{width:30px;height:22px}.top .actions{gap:5px}.top .actions .btn,.top .actions a{font-size:10px;padding:7px 9px}.top .actions #upload{display:none}.header-search{order:3;flex-basis:100%;max-width:none}.top{flex-wrap:wrap}.nova-sidebar{display:none}#browse{margin-left:0;padding-bottom:78px}.browse-title{font-size:20px;margin:18px 0 8px}.chips{top:108px;padding:10px 0}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:19px 10px}.thumb{border-radius:9px!important}.tile h3{font-size:13px}.tile-body{padding:8px 1px}.mobile-bottom-nav{position:fixed;display:flex;z-index:20;left:0;right:0;bottom:0;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));background:#0f0f0ff7;border-top:1px solid #303030}.mobile-bottom-nav a,.mobile-bottom-nav button{display:flex;flex-direction:column;align-items:center;gap:4px;color:#f1f1f1;background:none;border:0;font-size:10px}.mobile-bottom-nav span{font-size:21px}}
-</style><style>.channel-banner{background-size:cover;background-position:center}.channel-avatar{flex-shrink:0}.watch-meta #followCreator{margin-left:auto;border-radius:22px}.channel-grid-empty{padding:20px;color:#aaa}.panel.wide:has(#channelGrid){max-height:92vh;overflow:auto}.panel.wide:has(#channelGrid) .grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}#channelAboutText{padding:15px;background:#242424;border-radius:12px}</style><style>/* Keep navigation actions in one place */ .top .actions #downloads,.top .actions #mine{display:none!important}</style></head><body><div class="wrap"><header class="top"><a class="brand" href="./"><span>▶</span>NOVA STREAM</a><div class="header-search"><input id="headerSearch" type="search" placeholder="Search NOVA STREAM" aria-label="Search videos"><button type="button" id="headerSearchBtn" title="Search">⌕</button></div><div class="actions"><button class="btn install-app" id="installApp" type="button">📱 Install App</button><a href="premium.html" style="display:inline-flex;align-items:center;text-decoration:none;background:linear-gradient(120deg,#793dff,#c54be9);color:white;padding:11px 16px;border-radius:13px;font-weight:800;box-shadow:0 5px 25px #904cff66">♛ Get Premium</a><button class="btn" id="downloads">⬇ Downloads</button><button class="btn primary" id="upload">+ Upload video</button><button class="btn" id="account">Sign in / Sign up</button></div></header><aside class="nova-sidebar" aria-label="Main navigation">
+</style><style>.channel-banner{background-size:cover;background-position:center}.channel-avatar{flex-shrink:0}.watch-meta #followCreator{margin-left:auto;border-radius:22px}.channel-grid-empty{padding:20px;color:#aaa}.panel.wide:has(#channelGrid){max-height:92vh;overflow:auto}.panel.wide:has(#channelGrid) .grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}#channelAboutText{padding:15px;background:#242424;border-radius:12px}</style><style>/* Keep navigation actions in one place */ .top .actions #downloads,.top .actions #mine{display:none!important}</style><style>
+/* NOVA STREAM premium YouTube-style sidebar refresh */
+.nova-sidebar{
+  width:232px!important;top:65px!important;bottom:0!important;
+  padding:18px 12px 28px!important;overflow-y:auto!important;overflow-x:hidden!important;
+  background:rgba(15,15,15,.97)!important;border-right:1px solid #262626;
+  scrollbar-width:thin;scrollbar-color:#444 transparent;
+  backdrop-filter:blur(18px);
+}
+.nova-sidebar::-webkit-scrollbar{width:6px}
+.nova-sidebar::-webkit-scrollbar-thumb{background:#454545;border-radius:10px}
+.nova-side-link{
+  position:relative;min-height:44px!important;width:100%;
+  display:flex!important;align-items:center!important;gap:22px!important;
+  padding:10px 14px!important;margin:2px 0 5px!important;
+  border:1px solid transparent!important;border-radius:12px!important;
+  color:#e9e9e9!important;background:transparent!important;
+  font-size:14px!important;font-weight:500!important;letter-spacing:.05px;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.nova-side-link:hover{background:#252525!important;border-color:#343434!important;transform:translateX(2px)}
+.nova-side-link.active{background:linear-gradient(100deg,#292929,#202020)!important;color:#fff!important;font-weight:700!important;border-color:#383838!important}
+.nova-side-link.active:before{content:"";position:absolute;left:-12px;top:9px;bottom:9px;width:3px;border-radius:0 4px 4px 0;background:#ff0033}
+.nova-side-icon{
+  flex:0 0 26px;width:26px!important;height:26px;display:inline-grid!important;place-items:center;
+  border-radius:8px;font-size:21px!important;line-height:1;color:#f3f3f3;
+  transition:background .18s ease,color .18s ease;
+}
+.nova-side-link:hover .nova-side-icon{background:#383838;color:#fff}
+.nova-side-link.active .nova-side-icon{color:#fff}
+.nova-side-sep{height:1px!important;background:linear-gradient(90deg,transparent,#383838 12%,#383838 88%,transparent)!important;margin:16px 8px!important}
+.nova-side-label{display:flex;align-items:center;gap:7px;font-size:14px!important;color:#f1f1f1!important;font-weight:700!important;padding:10px 14px!important;letter-spacing:.2px}
+.nova-side-label:after{content:"›";font-size:20px;color:#aaa}
+#browse{margin-left:232px!important}
+@media(min-width:1001px){
+ .nova-sidebar{box-shadow:12px 0 28px #00000012}
+ #browse .chips{padding-top:14px}
+}
+@media(max-width:1000px){
+ .nova-sidebar{width:82px!important;padding:12px 5px!important}
+ .nova-side-link{min-height:66px!important;flex-direction:column!important;justify-content:center!important;gap:7px!important;padding:9px 2px!important;font-size:10px!important;border-radius:12px!important;text-align:center!important}
+ .nova-side-link:hover{transform:none}
+ .nova-side-link.active:before{left:0;top:15px;bottom:15px}
+ .nova-side-icon{width:28px!important;height:28px;font-size:22px!important;flex-basis:28px}
+ .nova-side-sep{margin:10px 5px!important}
+ .nova-side-label{justify-content:center;padding:8px 0!important;font-size:10px!important}
+ .nova-side-label:after{display:none}
+ #browse{margin-left:90px!important}
+}
+@media(max-width:600px){
+ .nova-sidebar{width:68px!important;top:60px!important;padding:9px 3px!important}
+ .nova-side-link{font-size:9px!important;min-height:60px!important}
+ #browse{margin-left:73px!important}
+}
+@media(prefers-reduced-motion:reduce){.nova-side-link,.nova-side-icon{transition:none!important}}
+</style></head><body><div class="wrap"><header class="top"><a class="brand" href="./"><span>▶</span>NOVA STREAM</a><div class="header-search"><input id="headerSearch" type="search" placeholder="Search NOVA STREAM" aria-label="Search videos"><button type="button" id="headerSearchBtn" title="Search">⌕</button></div><div class="actions"><button class="btn install-app" id="installApp" type="button">📱 Install App</button><a href="premium.html" style="display:inline-flex;align-items:center;text-decoration:none;background:linear-gradient(120deg,#793dff,#c54be9);color:white;padding:11px 16px;border-radius:13px;font-weight:800;box-shadow:0 5px 25px #904cff66">♛ Get Premium</a><button class="btn" id="downloads">⬇ Downloads</button><button class="btn primary" id="upload">+ Upload video</button><button class="btn" id="account">Sign in / Sign up</button></div></header><aside class="nova-sidebar" aria-label="Main navigation">
 <a class="nova-side-link active" href="./"><span class="nova-side-icon">⌂</span>Home</a>
 <button class="nova-side-link" type="button" id="sideShorts"><span class="nova-side-icon">▶</span>Shorts</button>
 <button class="nova-side-link" type="button" id="sideVideos"><span class="nova-side-icon">▤</span>Videos</button>
