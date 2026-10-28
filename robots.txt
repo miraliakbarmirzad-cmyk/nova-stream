@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /api/
-Sitemap: https://REPLACE_WITH_YOUR_NETLIFY_DOMAIN/sitemap.xml
+
+Sitemap: https://miraliakbarmirzad-cmyk.github.io/nova-stream/sitemap.xml
